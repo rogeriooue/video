@@ -51,30 +51,20 @@ export default function App() {
                   : Camera.Constants.Type.back
               );
             }}>
-            <FontAwesome name="exchange" size={23} color="red">
-            </FontAwesome>
+            <FontAwesome name="exchange" size={23} color="red"></FontAwesome>
           </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.buttonCamera}
-            onPress={takePicture}>
-            <FontAwesome name="camera" size={23} color="#fff">
-            </FontAwesome>
+          <TouchableOpacity style={styles.buttonCamera} onPress={takePicture}>
+            <FontAwesome name="camera" size={23} color="#fff"></FontAwesome>
           </TouchableOpacity>
         </View>
       </Camera>
       {capturedPhoto && (
-        <Modal
-          animationType="slide"
-          transparent={true}
-          visible={open}>
+        <Modal animationType="slide" transparent={true} visible={open}>
           <View style={styles.contentModal}>
-            <TouchableOpacity
-              style={styles.closeButton}
-              onPress={() => { setOpen(false) }}>
+            <TouchableOpacity style={styles.closeButton} onPress={() => { setOpen(false) }}>
               <FontAwesome name="close" size={50} color="#fff"></FontAwesome>
             </TouchableOpacity>
-            <Image style={styles.imgPhoto} source={{ uri: capturedPhoto }}>
-            </Image>
+            <Image style={styles.imgPhoto} source={{ uri: capturedPhoto }}></Image>
           </View>
         </Modal>
       )}
