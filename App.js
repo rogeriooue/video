@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity, Modal, Image } from 'react-native';
 
-import { Camera } from 'expo-camera';
+import { CameraView, useCameraPermissions } from 'expo-camera';
 
 import { FontAwesome } from '@expo/vector-icons';
 
@@ -9,24 +9,33 @@ import { FontAwesome } from '@expo/vector-icons';
 export default function App() {
 
   const camRef = useRef(null);
-  const [type, setType] = useState(Camera.Constants.Type.back);
-  const [hasPermission, setHasPermission] = useState(null);
+  const [facing, setFacing] = useState('back');
+  const [permission, requestPermission] = useCameraPermissions();
   const [capturedPhoto, setCapturedPhoto] = useState(null);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
     (async () => {
       const { status } = await Camera.requestCameraPermissionsAsync();
-      setHasPermission(status === 'granted');
+      requestPermission(status === 'granted');
     })();
   }, []);
 
-  if (hasPermission === null) {
+  if (!permission) {
     return <View />;
   }
 
-  if (hasPermission === false) {
-    return <Text>Acesso Negado!</Text>;
+  if (!permission.granted) {
+    return (
+      <View style={styles.container}>
+        <Text style={{ textAlign: 'center' }}>Acesso negado</Text>
+        <Button onPress={requestPermission} title="grant permission" />
+      </View>
+    );
+  }
+
+  function toggleCameraFacing() {
+    setFacing(current => (current === 'back' ? 'front' : 'back'));
   }
 
   async function takePicture() {
@@ -40,24 +49,19 @@ export default function App() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Camera style={styles.camera} type={type} ref={camRef}>
+      <CameraView style={styles.camera} facing={facing} ref={camRef}>
         <View style={styles.contentButtons}>
           <TouchableOpacity
             style={styles.buttonFlip}
-            onPress={() => {
-              setType(
-                type === Camera.Constants.Type.back
-                  ? Camera.Constants.Type.front
-                  : Camera.Constants.Type.back
-              );
-            }}>
+            onPress={toggleCameraFacing}>
             <FontAwesome name="exchange" size={23} color="red"></FontAwesome>
           </TouchableOpacity>
           <TouchableOpacity style={styles.buttonCamera} onPress={takePicture}>
             <FontAwesome name="camera" size={23} color="#fff"></FontAwesome>
           </TouchableOpacity>
         </View>
-      </Camera>
+      </CameraView>
+
       {capturedPhoto && (
         <Modal animationType="slide" transparent={true} visible={open}>
           <View style={styles.contentModal}>
