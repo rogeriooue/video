@@ -8,6 +8,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web"
   },
+  "author": "Rogerio Oue",
   "dependencies": {
     "expo": "^51.0.0",
     "expo-camera": "^15.0.9",
