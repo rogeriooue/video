@@ -10,9 +10,9 @@
   },
   "author": "Rogerio Oue",
   "dependencies": {
-    "expo": "^51.0.14",
-    "expo-camera": "^15.0.11",
-    "expo-media-library": "~16.0.3",
+    "expo": "^51.0.16",
+    "expo-camera": "^15.0.12",
+    "expo-media-library": "^16.0.4",
     "expo-status-bar": "~1.12.1",
     "react": "18.2.0",
     "react-native": "^0.74.2"
