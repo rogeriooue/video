@@ -10,7 +10,7 @@
   },
   "author": "Rogerio Oue",
   "dependencies": {
-    "expo": "^52.0.42",
+    "expo": "^52.0.46",
     "expo-camera": "^16.0.18",
     "expo-media-library": "^17.0.6",
     "expo-status-bar": "^2.0.1",
