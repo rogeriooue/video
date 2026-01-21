@@ -10,12 +10,12 @@
   },
   "author": "Rogerio Oue",
   "dependencies": {
-    "expo": "^52.0.47",
-    "expo-camera": "^16.0.18",
-    "expo-media-library": "^17.0.6",
-    "expo-status-bar": "^2.0.1",
-    "react": "^18.3.1",
-    "react-native": "^0.76.9",
+    "expo": "^54.0.31",
+    "expo-camera": "~17.0.10",
+    "expo-media-library": "~18.2.1",
+    "expo-status-bar": "~3.0.9",
+    "react": "^19.1.0",
+    "react-native": "^0.81.5",
     "video": "file:"
   },
   "devDependencies": {
