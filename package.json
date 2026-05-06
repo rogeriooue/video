@@ -10,20 +10,19 @@
   },
   "author": "Rogerio Oue",
   "dependencies": {
-    "expo": "^54.0.33",
-    "expo-camera": "~17.0.10",
-    "expo-media-library": "~18.2.1",
-    "expo-status-bar": "~3.0.9",
-    "react": "^19.1.0",
-    "react-native": "^0.81.5",
+    "expo": "~55.0.23",
+    "expo-camera": "~55.0.18",
+    "expo-media-library": "~55.0.16",
+    "expo-status-bar": "~55.0.6",
+    "react": "^19.2.0",
+    "react-native": "^0.83.6",
     "video": "file:"
   },
   "devDependencies": {
     "@babel/core": "^7.24.0"
   },
   "overrides": {
-    "minimatch": "^10.2.3",
-    "tar": "^7.5.8"
+    "postcss": "^8.5.10"
   },
   "private": true
 }
