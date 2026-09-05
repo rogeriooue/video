@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity, Modal, Image, Button } from 'react-native';
+import React, { useState, useRef } from 'react';
+import { StyleSheet, Text, View, TouchableOpacity, Modal, Image, Button } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { CameraView, useCameraPermissions } from 'expo-camera';
 
@@ -13,13 +14,6 @@ export default function App() {
   const [permission, requestPermission] = useCameraPermissions();
   const [capturedPhoto, setCapturedPhoto] = useState(null);
   const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    (async () => {
-      const { status } = await Camera.requestCameraPermissionsAsync();
-      requestPermission(status === 'granted');
-    })();
-  }, []);
 
   if (!permission) {
     return <View />;
@@ -50,17 +44,18 @@ export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       <CameraView style={styles.camera} facing={facing} ref={camRef}>
-        <View style={styles.contentButtons}>
-          <TouchableOpacity
-            style={styles.buttonFlip}
-            onPress={toggleCameraFacing}>
-            <FontAwesome name="exchange" size={23} color="red"></FontAwesome>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.buttonCamera} onPress={takePicture}>
-            <FontAwesome name="camera" size={23} color="#fff"></FontAwesome>
-          </TouchableOpacity>
-        </View>
       </CameraView>
+
+      <View style={styles.contentButtons}>
+        <TouchableOpacity
+          style={styles.buttonFlip}
+          onPress={toggleCameraFacing}>
+          <FontAwesome name="exchange" size={23} color="red"></FontAwesome>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.buttonCamera} onPress={takePicture}>
+          <FontAwesome name="camera" size={23} color="#fff"></FontAwesome>
+        </TouchableOpacity>
+      </View>
 
       {capturedPhoto && (
         <Modal animationType="slide" transparent={true} visible={open}>
@@ -86,7 +81,11 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   contentButtons: {
-    flex: 1,
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
     backgroundColor: 'transparent',
     flexDirection: 'row',
   },

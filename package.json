@@ -1,5 +1,5 @@
 {
-  "name": "video",
+  "name": "video-app",
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
@@ -10,19 +10,22 @@
   },
   "author": "Rogerio Oue",
   "dependencies": {
-    "expo": "~55.0.23",
-    "expo-camera": "~55.0.18",
-    "expo-media-library": "~55.0.16",
-    "expo-status-bar": "~55.0.6",
-    "react": "^19.2.0",
-    "react-native": "^0.83.6",
-    "video": "file:"
+    "@expo/vector-icons": "^15.0.2",
+    "expo": "~57.0.19",
+    "expo-camera": "~57.0.4",
+    "expo-font": "~57.0.3",
+    "expo-media-library": "~57.0.4",
+    "expo-splash-screen": "~57.0.8",
+    "react": "19.2.3",
+    "react-native": "0.86.3",
+    "react-native-safe-area-context": "~5.7.0"
   },
   "devDependencies": {
     "@babel/core": "^7.24.0"
   },
   "overrides": {
-    "postcss": "^8.5.10"
+    "postcss": "^8.5.10",
+    "uuid": "^14.0.2"
   },
   "private": true
 }
