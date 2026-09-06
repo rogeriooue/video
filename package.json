@@ -11,7 +11,7 @@
   "author": "Rogerio Oue",
   "dependencies": {
     "@expo/vector-icons": "^15.0.2",
-    "expo": "~57.0.19",
+    "expo": "~57.0.20",
     "expo-camera": "~57.0.4",
     "expo-font": "~57.0.3",
     "expo-media-library": "~57.0.4",
@@ -21,7 +21,8 @@
     "react-native-safe-area-context": "~5.7.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.24.0"
+    "@babel/core": "^7.24.0",
+    "babel-preset-expo": "~57.0.10"
   },
   "overrides": {
     "postcss": "^8.5.10",
